@@ -6,66 +6,111 @@
   <title>Workshop Speaker Schedule</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-white text-gray-800 font-sans">
+<body class="bg-gray-50 text-gray-800 font-sans">
   <div class="max-w-6xl mx-auto px-4 py-10">
     <div class="text-center mb-10">
-      <h1 class="text-3xl font-bold">Speaker Schedule</h1>
-      <p class="text-gray-600">July 22–23, 2025</p>
+      <h1 class="text-4xl font-extrabold text-blue-800">Speaker Schedule</h1>
+      <p class="text-lg text-gray-600">July 22–23, 2025</p>
     </div>
 
-    <!-- Day 1 Morning -->
-    <h2 class="text-2xl font-semibold mt-6 mb-3">22 July (Morning)</h2>
-    <table class="w-full text-left border border-gray-300 mb-8">
-      <thead class="bg-gray-100">
-        <tr>
-          <th class="p-2 border">Time</th>
-          <th class="p-2 border">Speaker</th>
-          <th class="p-2 border">Title</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="p-2 border">8:30–8:55</td><td class="p-2 border">Gerya, Taras</td><td class="p-2 border">Long-term biogeodynamical carbon cycle and implications for future climate change</td></tr>
-        <tr><td class="p-2 border">8:55–9:15</td><td class="p-2 border">Li, Zhengxiang</td><td class="p-2 border">A living Earth: Its evolution and dynamic inner workings</td></tr>
-        <tr><td class="p-2 border">9:15–9:35</td><td class="p-2 border">Cloetingh, Sierd</td><td class="p-2 border">Coupled surface to deep Earth processes: Perspectives from TOPO-EUROPE</td></tr>
-        <tr><td class="p-2 border">9:35–9:55</td><td class="p-2 border">Frezzotti, Maria Luce</td><td class="p-2 border">Diamond formation from deep C-O-H fluids in subduction zones</td></tr>
-        <tr><td class="p-2 border">9:55–10:15</td><td class="p-2 border">Scotese, Christopher</td><td class="p-2 border"></td></tr>
-        <tr><td class="p-2 border">10:15–10:45</td><td class="p-2 border" colspan="2">Break + Photography</td></tr>
-        <tr><td class="p-2 border">10:45–11:00</td><td class="p-2 border">Short talks</td><td class="p-2 border">Liu, Jin (10:45), Chen, Wei (10:50), Zhang, Lijuan (10:55)</td></tr>
-        <tr><td class="p-2 border">11:00–11:20</td><td class="p-2 border">Hu, Qingyang</td><td class="p-2 border">Monovalent calcium sulfide in Earth’s lower mantle</td></tr>
-        <tr><td class="p-2 border">11:20–11:40</td><td class="p-2 border">Chen, Chunfei</td><td class="p-2 border">Sulfide-rich continental roots at cratonic margins</td></tr>
-        <tr><td class="p-2 border">11:40–12:00</td><td class="p-2 border">Vitale Brovarone, Alberto</td><td class="p-2 border">Fluid inclusion-mediated deep carbon fluxes</td></tr>
-      </tbody>
-    </table>
+    <style>
+      table th, table td {
+        vertical-align: top;
+      }
+      .break-row {
+        background-color: #fef9c3;
+        color: #92400e;
+        font-weight: bold;
+        text-align: center;
+      }
+    </style>
 
-    <!-- Day 1 Afternoon -->
-    <h2 class="text-2xl font-semibold mt-6 mb-3">22 July (Afternoon)</h2>
-    <table class="w-full text-left border border-gray-300 mb-8">
-      <thead class="bg-gray-100">
-        <tr>
-          <th class="p-2 border">Time</th>
-          <th class="p-2 border">Speaker</th>
-          <th class="p-2 border">Title</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="p-2 border">14:00–14:20</td><td class="p-2 border">Zhao, Liang</td><td class="p-2 border"></td></tr>
-        <tr><td class="p-2 border">14:20–14:40</td><td class="p-2 border">Liu, Yonggang</td><td class="p-2 border">Supercycle: Progress on Modeling Surface Processes</td></tr>
-        <tr><td class="p-2 border">14:40–15:00</td><td class="p-2 border">Cao, Wenrong</td><td class="p-2 border">Phanerozoic Continental Magmatism and Chemical Weathering</td></tr>
-        <tr><td class="p-2 border">15:00–15:20</td><td class="p-2 border">Man, Wenmin</td><td class="p-2 border">Hydroclimate response to volcanic eruptions</td></tr>
-        <tr><td class="p-2 border">15:20–15:40</td><td class="p-2 border">Ramstein, Gilles</td><td class="p-2 border">From lithosphere to atmospheric CO2</td></tr>
-        <tr><td class="p-2 border">15:40–15:55</td><td class="p-2 border" colspan="2">Break</td></tr>
-        <tr><td class="p-2 border">15:55–16:10</td><td class="p-2 border">Short talks</td><td class="p-2 border">Zhao, Mingyu; Gao, Liang; Guo, Pengyuan</td></tr>
-        <tr><td class="p-2 border">16:10–16:30</td><td class="p-2 border">Wu, Haibin</td><td class="p-2 border">Sunda Shelf carbon cycle and interglacial CO2</td></tr>
-        <tr><td class="p-2 border">16:30–16:50</td><td class="p-2 border">Spicer, Robert</td><td class="p-2 border">Links between Leaves and Lithosphere</td></tr>
-        <tr><td class="p-2 border">16:50–17:10</td><td class="p-2 border">Chen, Jiubin</td><td class="p-2 border">Tracing metals from lithology to life</td></tr>
-        <tr><td class="p-2 border">17:10–17:30</td><td class="p-2 border">Zhang, Yige</td><td class="p-2 border">Neogene Global Carbon Cycle</td></tr>
-        <tr><td class="p-2 border">17:30–17:50</td><td class="p-2 border">Yuan, Xiaoping</td><td class="p-2 border">Linking deep Earth to Himalayan climate</td></tr>
-      </tbody>
-    </table>
+    <script>
+      function renderTable(day, period, rows) {
+        const table = `
+          <h2 class="text-2xl font-semibold mt-10 mb-3">${day} (${period})</h2>
+          <div class="overflow-x-auto">
+          <table class="w-full text-left border border-gray-300 mb-8 shadow-md rounded-lg">
+            <thead class="bg-blue-100 text-blue-900">
+              <tr>
+                <th class="p-3 border">Time</th>
+                <th class="p-3 border">Speaker</th>
+                <th class="p-3 border">Title</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white text-sm">
+              ${rows.map(r => `
+                <tr class="${r.speaker.toLowerCase().includes('break') ? 'break-row' : ''}">
+                  <td class="p-3 border whitespace-nowrap">${r.time}</td>
+                  <td class="p-3 border">${r.speaker}</td>
+                  <td class="p-3 border">${r.title}</td>
+                </tr>`).join('')}
+            </tbody>
+          </table>
+          </div>`;
+        document.write(table);
+      }
+    </script>
 
-    <!-- Additional days and sessions can be inserted similarly -->
+    <script>
+      renderTable("22 July", "Morning", [
+        { time: "8:30–8:55", speaker: "Gerya, Taras", title: "Long-term biogeodynamical carbon cycle and implications for future climate change" },
+        { time: "8:55–9:15", speaker: "Li, Zhengxiang", title: "A living Earth: Its evolution and dynamic inner workings" },
+        { time: "9:15–9:35", speaker: "Cloetingh, Sierd", title: "Coupled surface to deep Earth processes: Perspectives from TOPO-EUROPE with an emphasis on climate- and energy-related societal challenges" },
+        { time: "9:35–9:55", speaker: "Frezzotti, Maria Luce", title: "Direct insights into diamond formation from deep C-O-H fluids in subduction zones" },
+        { time: "9:55–10:15", speaker: "Scotese, Christopher", title: "" },
+        { time: "10:15–10:45", speaker: "Break + Photography", title: "" },
+        { time: "10:45–11:00", speaker: "Short Talks", title: "Liu, Jin (10:45), Chen, Wei (10:50), Zhang, Lijuan (10:55)" },
+        { time: "11:00–11:20", speaker: "Hu, Qingyang", title: "Monovalent calcium sulfide in Earth’s lower mantle" },
+        { time: "11:20–11:40", speaker: "Chen, Chunfei", title: "Sulfide-rich continental roots at cratonic margins formed by migration of carbonated melts and their implications for sulfide deposits" },
+        { time: "11:40–12:00", speaker: "Vitale Brovarone, Alberto", title: "Tracking fluid inclusion-mediated deep carbon fluxes across orogenic cycles" },
+      ]);
 
-    <footer class="text-center text-sm text-gray-500 mt-10">
+      renderTable("22 July", "Afternoon", [
+        { time: "14:00–14:20", speaker: "Zhao, Liang", title: "" },
+        { time: "14:20–14:40", speaker: "Liu, Yonggang", title: "Supercycle: Progress on Modeling Surface Processes" },
+        { time: "14:40–15:00", speaker: "Cao, Wenrong", title: "Phanerozoic Continental Magmatism and Chemical Weathering" },
+        { time: "15:00–15:20", speaker: "Man, Wenmin", title: "Hydroclimate response to volcanic eruptions" },
+        { time: "15:20–15:40", speaker: "Ramstein, Gilles", title: "From lithosphere to atmospheric CO2" },
+        { time: "15:40–15:55", speaker: "Break", title: "" },
+        { time: "15:55–16:10", speaker: "Short Talks", title: "Zhao, Mingyu; Gao, Liang; Guo, Pengyuan" },
+        { time: "16:10–16:30", speaker: "Wu, Haibin", title: "Sunda Shelf carbon cycle and interglacial CO2" },
+        { time: "16:30–16:50", speaker: "Spicer, Robert", title: "Links between Leaves and Lithosphere" },
+        { time: "16:50–17:10", speaker: "Chen, Jiubin", title: "Tracing metals from lithology to life" },
+        { time: "17:10–17:30", speaker: "Zhang, Yige", title: "Neogene Global Carbon Cycle" },
+        { time: "17:30–17:50", speaker: "Yuan, Xiaoping", title: "Linking deep Earth to Himalayan climate" },
+      ]);
+
+      renderTable("23 July", "Morning", [
+        { time: "8:30–8:55", speaker: "Wan, Bo", title: "" },
+        { time: "8:55–9:15", speaker: "Zhu, Dicheng", title: "Accumelting and its impacts on Earth's Habitability" },
+        { time: "9:15–9:35", speaker: "Hu, Xiumian", title: "Oceans in the Tethys: some old, some young; some big, some small" },
+        { time: "9:35–9:55", speaker: "Houseman, Gregory", title: "Gravitational Instability of Metasomatised Continental Mantle Lithosphere" },
+        { time: "9:55–10:15", speaker: "Ji, Weiqiang", title: "Carbon Cycle in the Tethyan Orogenic Belt" },
+        { time: "10:15–10:30", speaker: "Break", title: "" },
+        { time: "10:30–10:45", speaker: "Short Talks", title: "Deng, Linpei (10:30), Luo, Yun (10:35), Wu, Jing (10:40)" },
+        { time: "10:45–11:05", speaker: "Chu, Xu", title: "Carbon Release from Contact Metamorphism in the Gangdese Arc" },
+        { time: "11:05–11:25", speaker: "Malusà, Marco", title: "Evolution of cold continental subduction and tectonic carbon cycle" },
+        { time: "11:25–11:45", speaker: "Rawlinson, Nicholas", title: "Lithospheric evolution in Southeast Asia" },
+      ]);
+
+      renderTable("23 July", "Afternoon", [
+        { time: "14:00–14:20", speaker: "Cawood, Peter", title: "Tectonic carbon cycle in deep time" },
+        { time: "14:20–14:40", speaker: "Liu, Lijun", title: "Periodic instability and restoration of cratonic lithosphere" },
+        { time: "14:40–15:00", speaker: "Yuan, Huaiyu", title: "Seismic Insights into Early Crustal Dynamics" },
+        { time: "15:00–15:20", speaker: "Thybo, Hans", title: "Eclogites as a trigger of the Phanerozoic explosion" },
+        { time: "15:20–15:40", speaker: "Sternai, Pietro", title: "Neo-Tethyan carbon cycling and Cenozoic climate" },
+        { time: "15:40–15:55", speaker: "Break", title: "" },
+        { time: "15:55–16:10", speaker: "Short Talks", title: "Tang, Chunan (15:55), Wu, Sensen (16:00), Huang, Min (16:05)" },
+        { time: "16:10–16:30", speaker: "Wilde, Simon", title: "Multi-mineral dating of lamproites in Western Australia" },
+        { time: "16:30–16:50", speaker: "Wang, Shuijiong", title: "Ghost carbonate in Archean granitoids" },
+        { time: "16:50–17:10", speaker: "Stagno, Vincenzo", title: "Eclogitic diamonds from the Siberian craton" },
+        { time: "17:10–17:30", speaker: "Liu, Jia", title: "A hydrous mantle source for the Agulhas Plateau" },
+        { time: "17:30–17:50", speaker: "Artemieva, Irina", title: "Lithosphere heterogeneity from geophysics and kimberlites" },
+      ]);
+    </script>
+
+    <footer class="text-center text-sm text-gray-500 mt-16 border-t pt-6">
       © 2025 Workshop Committee | All rights reserved.
     </footer>
   </div>
