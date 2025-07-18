@@ -26,9 +26,9 @@
       function renderTable(day, period, rows) {
         const table = `
           <section class="mb-12">
-            <h2 class="text-2xl font-bold text-blue-700 mb-4">${day} (${period})</h2>  
+            <h2 class="text-2xl font-bold text-blue-700 mb-4">${day} (${period})</h2>    
             <div class="overflow-x-auto rounded-xl shadow-lg bg-white">
-              <table class="min-w-full divide-y divide-gray-200">
+              <table class="min-w-full divide-y divide-gray-200">  
                 <thead class="bg-blue-100 text-blue-900">
                   <tr>
                     <th class="p-4 text-left">Time</th>
@@ -61,16 +61,16 @@
 
     <script>
       renderTable("22 July", "Morning", [
-        { time: "", speaker: "Chair: tbd", title: "", mergeSpeakerAndTitle: true },      
+        { time: "", speaker: "Chair: Guo, Zhengtang", title: "", mergeSpeakerAndTitle: true },        
         { time: "8:30–8:35", speaker: "Welcome and opening remarks", title: "", mergeSpeakerAndTitle: true },    
-        { time: "8:35–9:00", speaker: "Gerya, Taras", title: "Long-term biogeodynamical carbon cycle and implications for future climate change" },  
+        { time: "8:35–9:00", speaker: "Gerya, Taras", title: "Long-term biogeodynamical carbon cycle and implications for future climate change" },    
         { time: "9:00–9:20", speaker: "Li, Zhengxiang", title: "A living Earth: Its evolution and dynamic inner workings" },
         { time: "9:20–9:40", speaker: "Cloetingh, Sierd", title: "Coupled surface to deep Earth processes: Perspectives from TOPO-EUROPE with an emphasis on climate- and energy-related societal challenges" },
-        { time: "9:40–10:00", speaker: "Frezzotti, Maria Luce", title: "Direct insights into diamond formation from deep C-O-H fluids in subduction zones" },  
+        { time: "9:40–10:00", speaker: "Frezzotti, Maria Luce", title: "Direct insights into diamond formation from deep C-O-H fluids in subduction zones" },    
         { time: "10:00–10:20", speaker: "*Scotese, Christopher", title: "Plate Tectonic Reconstructions for the Mesoproterozoic, Neoproterozoic, and Early Paleozoic (1600 Ma – 400 Ma)" },  
         { time: "10:20–10:50", speaker: "Break + Group Photo", title: "", mergeSpeakerAndTitle: true },  
         { time: "", speaker: "Chair: Artemieva, Irina", title: "", mergeSpeakerAndTitle: true },          
-        { time: "10:50–11:05", speaker: "Short Talks", title: "Liu, Jin (10:50-10:55); Chen, Wei (10:55-11:00); Zhang, Lijuan (11:00-11:05)" },
+        { time: "10:50–11:05", speaker: "Short Talks", title: "Liu, Jin (10:50-10:55); Chen, Wei (10:55-11:00); Zhang, Lijuan (11:00-11:05)" },  
         { time: "11:05–11:25", speaker: "Hu, Qingyang", title: "Monovalent calcium sulfide in Earth’s lower mantle" },      
         { time: "11:25–11:45", speaker: "Chen, Chunfei", title: "Sulfide-rich continental roots at cratonic margins formed by migration of carbonated melts and their implications for sulfide deposits" },    
         { time: "11:45–12:05", speaker: "Vitale Brovarone, Alberto", title: "Tracking fluid inclusion-mediated deep carbon fluxes across orogenic cycles" },    
@@ -80,11 +80,11 @@
         { time: "", speaker: "Chair: Spicer, Robert", title: "", mergeSpeakerAndTitle: true },
         { time: "14:00–14:20", speaker: "Zhao, Liang", title: "Revealing Cenozoic climate shifts using seismo-geodynamic constraints" },      
         { time: "14:20–14:40", speaker: "Liu, Yonggang", title: "Supercycle: Progress on the Modeling of Surface Processes" },
-        { time: "14:40–15:00", speaker: "Cao, Wenrong", title: "Phanerozoic Continental Magmatism: Linking Spatiotemporal Evolution, Isotopic Composition, and Chemical Weathering" },  
+        { time: "14:40–15:00", speaker: "Cao, Wenrong", title: "Phanerozoic Continental Magmatism: Linking Spatiotemporal Evolution, Isotopic Composition, and Chemical Weathering" },    
         { time: "15:00–15:20", speaker: "Man, Wenmin", title: "Hydroclimate responses over global monsoon regions to volcanic eruptions during the last millennium" },  
         { time: "15:20–15:40", speaker: "*Ramstein, Gilles", title: "From lithosphere to atmospheric CO2, a longstanding interactive process regulating Earth’s climate" },    
         { time: "15:40–15:55", speaker: "Break", title: "", mergeSpeakerAndTitle: true },    
-        { time: "", speaker: "Chair: Zhao, Liang", title: "", mergeSpeakerAndTitle: true },    
+        { time: "", speaker: "Chair: Zhao, Liang", title: "", mergeSpeakerAndTitle: true },      
         { time: "15:55–16:10", speaker: "Short Talks", title: "Zhao, Mingyu (15:55-16:00); Gao, Liang (16:00-16:05); Deng, Linpei (16:05-16:10)" },      
         { time: "16:10–16:30", speaker: "Wu, Haibin", title: "Impact of the Sunda Shelf carbon cycle on interglacial CO2 concentrations during the Mid-Brunhes Event" },    
         { time: "16:30–16:50", speaker: "Spicer, Robert", title: "The Intimate Links between Leaves and Lithosphere" },  
@@ -95,8 +95,8 @@
 
       renderTable("23 July", "Morning", [  
         { time: "", speaker: "Chair: Wu, Fuyuan", title: "", mergeSpeakerAndTitle: true },      
-        { time: "8:30–8:55", speaker: "Wan, Bo", title: "Anoxic Equatorial Tethys ocean and Its Magmatic-Metallogenic Implications" },
-        { time: "8:55–9:15", speaker: "Zhu, Dicheng", title: "Accumelting and its impacts on Earth's Habitability" },  
+        { time: "8:30–8:55", speaker: "Wan, Bo", title: "Anoxic Equatorial Tethys Ocean and Its Magmatic-Metallogenic Implications" },  
+        { time: "8:55–9:15", speaker: "Zhu, Dicheng", title: "Accumelting and its impacts on Earth's Habitability" },    
         { time: "9:15–9:35", speaker: "Chu, Xu", title: "Carbon Release from Contact Metamorphism in the Gangdese Arc: Implications for Arc-Climate Linkages" },
         { time: "9:35–9:55", speaker: "Houseman, Gregory", title: "The Tibetan Plateau: Inference of Gravitational Instability of Metasomatised Continental Mantle Lithosphere" },
         { time: "9:55–10:15", speaker: "Ji, Weiqiang", title: "Carbon Cycle in the Tethyan Orogenic Belt" },    
@@ -109,7 +109,7 @@
       ]);
 
       renderTable("23 July", "Afternoon", [  
-        { time: "", speaker: "Chair: Gerya, Taras", title: "", mergeSpeakerAndTitle: true },         
+        { time: "", speaker: "Chair: Gerya, Taras", title: "", mergeSpeakerAndTitle: true },           
         { time: "14:00–14:20", speaker: "Cawood, Peter", title: "Tectonic carbon cycle in deep time – constraints from Earth’s secular evolution and implications for habitability" },  
         { time: "14:20–14:40", speaker: "Liu, Lijun", title: "Periodic instability and restoration of cratonic lithosphere" },
         { time: "14:40–15:00", speaker: "Yuan, Huaiyu", title: "Echoes of Ancient Earth: Seismic Insights into Early Crustal Dynamics" },  
