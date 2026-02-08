@@ -154,90 +154,84 @@
     <div class="lb-caption" id="lbCaption"></div>
   </div>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    /* =========================
-       你以后只改这里 👇
-    ========================= */
-    const albums = [
-     {
-        title: "2026 · 02",
-        desc: "",
-        folder: "year photos",
-        prefix: "2026-02-",
-        captions: [
-          "Yuwei’s New Look"
-        ]
-      },
+  const albums = [
+    {
+      title: "2026 · 02",
+      desc: "",
+      folder: "year photos",
+      photos: [
+        { date: "2026-02-06", caption: "Yuwei’s New Look" },
+      ]
+    },
+    {
+      title: "2026 · 01",
+      desc: "",
+      folder: "year photos",
+      photos: [
+        { date: "2026-01-17", seq: "01", caption: "First Meeting Pink Roses from Yuwei" },
+        { date: "2026-01-17", seq: "02", caption: "First Meeting Pink Roses from Yuwei" },
+        { date: "2026-01-27", caption: "Together with Yuwei" } // 不带序号
+      ]
+    }
+  ];
 
-      {
-        title: "2026 · 01",
-        desc: "",
-        folder: "year photos",
-        prefix: "2026-01-",
-        captions: [
-          "First Meeting Pink Roses from Yuwei",
-          "First Meeting Pink Roses from Yuwei",
-          "Together with Yuwei Meeting"
-        ]
-      }
+  const timeline = document.getElementById("timeline");
 
-    ];
-    /* ========================= */
+  albums.forEach(album => {
+    const block = document.createElement("div");
+    block.className = "time-block";
 
-    const timeline = document.getElementById("timeline");
+    block.innerHTML = `
+      <h2 class="time-title">${album.title}</h2>
+      <p class="time-desc">${album.desc}</p>
+      <div class="grid"></div>
+    `;
 
-    albums.forEach(album => {
-      const block = document.createElement("div");
-      block.className = "time-block";
+    const grid = block.querySelector(".grid");
 
-      block.innerHTML = `
-        <h2 class="time-title">${album.title}</h2>
-        <p class="time-desc">${album.desc}</p>
-        <div class="grid"></div>
-      `;
+    album.photos.forEach(p => {
+      // 拼接文件名
+      const filename = p.seq ? `${p.date}_${p.seq}.JPG` : `${p.date}.JPG`;
+      const src = `${album.folder}/${filename}`;
 
-      const grid = block.querySelector(".grid");
+      const img = document.createElement("img");
+      img.src = src;
+      img.dataset.caption = p.caption || "";
 
-      album.captions.forEach((text, i) => {
-        const num = String(i + 1).padStart(2, "0");
-        const src = `${album.folder}/${album.prefix}${num}.jpg`;
+      const cap = document.createElement("div");
+      cap.className = "caption";
+      cap.textContent = p.caption || "";
 
-        const img = document.createElement("img");
-        img.src = src;
-        img.dataset.caption = text;
+      const card = document.createElement("div");
+      card.className = "card";
+      card.appendChild(img);
+      card.appendChild(cap);
 
-        const cap = document.createElement("div");
-        cap.className = "caption";
-        cap.textContent = text;
-
-        const card = document.createElement("div");
-        card.className = "card";
-        card.appendChild(img);
-        card.appendChild(cap);
-
-        grid.appendChild(card);
-      });
-
-      timeline.appendChild(block);
+      grid.appendChild(card);
     });
 
-    // lightbox
-    const lb = document.getElementById("lightbox");
-    const lbImg = document.getElementById("lbImg");
-    const lbCaption = document.getElementById("lbCaption");
+    timeline.appendChild(block);
+  });
 
-    document.addEventListener("click", e => {
-      if (e.target.tagName === "IMG" && e.target.closest(".card")) {
-        lbImg.src = e.target.src;
-        lbCaption.textContent = e.target.dataset.caption || "";
-        lb.classList.add("open");
-      }
-    });
+  // lightbox
+  const lb = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lbImg");
+  const lbCaption = document.getElementById("lbCaption");
 
-    document.getElementById("lbClose").onclick = () => lb.classList.remove("open");
-    lb.onclick = e => { if (e.target === lb) lb.classList.remove("open"); };
-  </script>
+  document.addEventListener("click", e => {
+    if (e.target.tagName === "IMG" && e.target.closest(".card")) {
+      lbImg.src = e.target.src;
+      lbCaption.textContent = e.target.dataset.caption || "";
+      lb.classList.add("open");
+    }
+  });
+
+  document.getElementById("lbClose").onclick = () => lb.classList.remove("open");
+  lb.onclick = e => { if (e.target === lb) lb.classList.remove("open"); };
+</script>
+
 </body>
 </html>
