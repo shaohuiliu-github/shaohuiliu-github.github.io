@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shaohui & Yuwei</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: #fff;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px;
+    }
+
+    header {
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    .time-block {
+      margin-bottom: 70px;
+    }
+
+    .time-title {
+      font-size: 22px;
+      margin-bottom: 8px;
+      border-left: 4px solid #ddd;
+      padding-left: 12px;
+    }
+
+    .time-desc {
+      margin: 0 0 18px 16px;
+      color: #666;
+      font-size: 15px;
+      max-width: 720px;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid #eee;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fafafa;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .card img:hover {
+      transform: scale(1.03);
+    }
+
+    .caption {
+      padding: 10px 12px;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+      background: #fafafa;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #888;
+      margin-top: 60px;
+    }
+
+    /* ===== lightbox ===== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 20px;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 92%;
+      max-height: 75%;
+      border-radius: 10px;
+      margin-bottom: 14px;
+    }
+
+    .lb-caption {
+      color: #ddd;
+      font-size: 15px;
+      max-width: 720px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Shaohui & Yuwei</h1>
+    </header>
+
+    <section id="timeline"></section>
+
+    <footer>
+      © <span id="year"></span> Shaohui Liu & Yuwei Zhang
+    </footer>
+  </div>
+
+  <!-- lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="close" id="lbClose">Close</button>
+    <img id="lbImg" src="">
+    <div class="lb-caption" id="lbCaption"></div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* =========================
+       你以后只改这里 👇
+    ========================= */
+    const albums = [
+      {
+        title: "2026 · 01",
+        desc: "",
+        folder: "year photos/2026-01",
+        prefix: "2026-01-",
+        captions: [
+          "图片描述1",
+          "图片描述2",
+          "图片描述3"
+        ]
+      },
+      {
+        title: "2026 · 02",
+        desc: "",
+        folder: "year photos/2026-02",
+        prefix: "2026-02-",
+        captions: [
+          "图片描述1",
+          "图片描述2"
+        ]
+      }
+    ];
+    /* ========================= */
+
+    const timeline = document.getElementById("timeline");
+
+    albums.forEach(album => {
+      const block = document.createElement("div");
+      block.className = "time-block";
+
+      block.innerHTML = `
+        <h2 class="time-title">${album.title}</h2>
+        <p class="time-desc">${album.desc}</p>
+        <div class="grid"></div>
+      `;
+
+      const grid = block.querySelector(".grid");
+
+      album.captions.forEach((text, i) => {
+        const num = String(i + 1).padStart(2, "0");
+        const src = `${album.folder}/${album.prefix}_${num}.jpg`;
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.dataset.caption = text;
+
+        const cap = document.createElement("div");
+        cap.className = "caption";
+        cap.textContent = text;
+
+        const card = document.createElement("div");
+        card.className = "card";
+        card.appendChild(img);
+        card.appendChild(cap);
+
+        grid.appendChild(card);
+      });
+
+      timeline.appendChild(block);
+    });
+
+    // lightbox
+    const lb = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lbImg");
+    const lbCaption = document.getElementById("lbCaption");
+
+    document.addEventListener("click", e => {
+      if (e.target.tagName === "IMG" && e.target.closest(".card")) {
+        lbImg.src = e.target.src;
+        lbCaption.textContent = e.target.dataset.caption || "";
+        lb.classList.add("open");
+      }
+    });
+
+    document.getElementById("lbClose").onclick = () => lb.classList.remove("open");
+    lb.onclick = e => { if (e.target === lb) lb.classList.remove("open"); };
+  </script>
+</body>
+</html>
