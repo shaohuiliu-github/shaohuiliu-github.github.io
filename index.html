@@ -202,7 +202,7 @@
 
       album.captions.forEach((text, i) => {
         const num = String(i + 1).padStart(2, "0");
-        const src = `${album.folder}/${album.prefix}_${num}.jpg`;
+        const src = `${album.folder}/${album.prefix}${num}.jpg`;
 
         const img = document.createElement("img");
         img.src = src;
