@@ -4,8 +4,9 @@
 
 ## 当前入口
 
-- `index.html`：生日主页
-- `memories.html`：Shaohui & Yuwei 照片墙（整合 `photos/`、`year photos/` 和新增照片）
+- `index.html`：Shaohui & Yuwei 照片墙（主主页，整合 `photos/`、`year photos/` 和新增照片）
+- `birthday.html`：生日主页归档
+- `memories.html`：旧照片墙网址兼容入口，自动跳转到主主页
 - `site-map.html`：旧网页与资料索引
 
 ## 历史页面
