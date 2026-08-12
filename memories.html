@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6efe6">
+  <title>Shaohui & Yuwei · 照片墙</title>
+  <style>
+    :root {
+      --ink: #29241f;
+      --muted: #746b61;
+      --paper: #f8f3ec;
+      --cream: #fffaf3;
+      --rose: #c96f78;
+      --sage: #72836d;
+      --line: rgba(62, 49, 38, .14);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 3%, rgba(214, 154, 146, .17), transparent 28rem),
+        radial-gradient(circle at 88% 15%, rgba(126, 151, 116, .14), transparent 27rem),
+        var(--paper);
+      font-family: ui-serif, "Songti SC", "STSong", Georgia, serif;
+    }
+
+    a { color: inherit; }
+    button { font: inherit; }
+    .wrap { width: min(1240px, calc(100% - 32px)); margin: auto; }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 24px 0;
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+    }
+
+    .brand { text-decoration: none; font-weight: 750; letter-spacing: .05em; }
+    .toplinks { display: flex; gap: 18px; color: var(--muted); font-size: 14px; }
+    .toplinks a { text-underline-offset: 4px; }
+
+    .hero {
+      min-height: 72vh;
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      align-items: center;
+      gap: clamp(28px, 6vw, 78px);
+      padding: 42px 0 84px;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--rose);
+      font: 700 12px/1 ui-sans-serif, -apple-system, "PingFang SC", sans-serif;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    h1 { margin: 0; font-size: clamp(54px, 9vw, 116px); line-height: .88; font-weight: 500; letter-spacing: -.055em; }
+    h1 em { display: block; margin-left: .75em; color: var(--rose); font-weight: 400; }
+    .intro { max-width: 31em; margin: 28px 0 0; color: var(--muted); font-size: clamp(16px, 2vw, 20px); line-height: 1.85; }
+
+    .hero-stack { position: relative; min-height: 560px; }
+    .hero-photo {
+      position: absolute;
+      overflow: hidden;
+      border: 10px solid var(--cream);
+      background: #ddd;
+      box-shadow: 0 24px 60px rgba(61, 48, 36, .2);
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-photo.one { inset: 2% 8% 14% 18%; transform: rotate(2.5deg); }
+    .hero-photo.two { width: 42%; height: 43%; left: 0; bottom: 0; transform: rotate(-7deg); }
+    .hero-photo.three { width: 38%; height: 36%; right: 0; top: 4%; transform: rotate(7deg); }
+
+    .gallery-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; padding: 50px 0 30px; border-top: 1px solid var(--line); }
+    h2 { margin: 0; font-size: clamp(34px, 5vw, 64px); font-weight: 500; letter-spacing: -.035em; }
+    .count { color: var(--muted); font: 14px/1.5 ui-sans-serif, -apple-system, "PingFang SC", sans-serif; }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 34px; }
+    .filter {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 16px;
+      color: var(--muted);
+      background: rgba(255, 250, 243, .72);
+      cursor: pointer;
+      transition: .2s ease;
+    }
+    .filter:hover, .filter.active { color: #fff; border-color: var(--ink); background: var(--ink); }
+
+    .wall { columns: 4 250px; column-gap: 18px; }
+    .photo {
+      break-inside: avoid;
+      margin: 0 0 18px;
+      padding: 9px 9px 14px;
+      border: 1px solid rgba(63, 50, 37, .08);
+      background: var(--cream);
+      box-shadow: 0 8px 26px rgba(61, 48, 36, .08);
+      cursor: zoom-in;
+      transition: opacity .25s ease, transform .25s ease, box-shadow .25s ease;
+    }
+    .photo:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(61, 48, 36, .15); }
+    .photo[hidden] { display: none; }
+    .photo img { display: block; width: 100%; height: auto; background: #e9e1d7; }
+    .photo figcaption { display: flex; justify-content: space-between; gap: 12px; padding: 11px 3px 0; color: var(--muted); font: 13px/1.4 ui-sans-serif, -apple-system, "PingFang SC", sans-serif; }
+    .tag { color: var(--rose); }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(27, 24, 21, .92);
+      cursor: zoom-out;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: min(92vw, 1500px); max-height: 88vh; object-fit: contain; box-shadow: 0 24px 80px #000; }
+    .close { position: fixed; top: 18px; right: 22px; border: 0; color: #fff; background: transparent; font-size: 34px; cursor: pointer; }
+
+    footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 70px; padding: 28px 0 42px; border-top: 1px solid var(--line); color: var(--muted); font: 13px/1.6 ui-sans-serif, -apple-system, "PingFang SC", sans-serif; }
+
+    @media (max-width: 760px) {
+      .hero { min-height: auto; grid-template-columns: 1fr; padding-top: 22px; }
+      .hero-stack { min-height: 430px; }
+      .toplinks a:first-child { display: none; }
+      .gallery-head { align-items: start; flex-direction: column; }
+      .wall { columns: 2 145px; column-gap: 10px; }
+      .photo { margin-bottom: 10px; padding: 6px 6px 10px; }
+      .photo figcaption { display: block; font-size: 11px; }
+      .tag { display: block; margin-top: 3px; }
+      footer { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap topbar">
+    <a class="brand" href="./">S & Y</a>
+    <nav class="toplinks" aria-label="页面导航">
+      <a href="#photos">照片</a>
+      <a href="site-map.html">旧网页与资料</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <div>
+        <p class="eyebrow">Shaohui · Yuwei · Us</p>
+        <h1>我们<em>的日常</em></h1>
+        <p class="intro">有你的照片，有我的照片，也有我们在一起的照片。把散落在不同文件夹里的瞬间，慢慢整理成一面会继续长大的照片墙。</p>
+      </div>
+      <div class="hero-stack" aria-label="精选照片">
+        <figure class="hero-photo one"><img src="assets/memories/together-city.webp" alt="少辉和 Yuwei 的合影" fetchpriority="high"></figure>
+        <figure class="hero-photo two"><img src="assets/memories/yuwei-flowers.webp" alt="Yuwei 和花" fetchpriority="high"></figure>
+        <figure class="hero-photo three"><img src="assets/memories/shaohui-mountain.webp" alt="少辉在山间" fetchpriority="high"></figure>
+      </div>
+    </section>
+
+    <section class="wrap" id="photos">
+      <div class="gallery-head">
+        <h2>二十三个瞬间</h2>
+        <p class="count" id="photoCount">全部照片 · 23</p>
+      </div>
+      <div class="filters" aria-label="筛选照片">
+        <button class="filter active" data-filter="all" type="button">全部</button>
+        <button class="filter" data-filter="yuwei" type="button">Yuwei</button>
+        <button class="filter" data-filter="shaohui" type="button">少辉</button>
+        <button class="filter" data-filter="together" type="button">我们</button>
+        <button class="filter" data-filter="keepsake" type="button">小收藏</button>
+      </div>
+      <div class="wall" id="wall"></div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <span>Shaohui Liu & Yuwei Zhang</span>
+    <span>旧网页与资料均保留在原路径 · <a href="site-map.html">查看索引</a></span>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="查看大图">
+    <button class="close" id="close" type="button" aria-label="关闭">×</button>
+    <img id="lightboxImage" alt="">
+  </div>
+
+  <script>
+    const photos = [
+      ["together-city.webp", "我们", "together"],
+      ["yuwei-flowers.webp", "花与笑脸", "yuwei"],
+      ["shaohui-mountain.webp", "山间", "shaohui"],
+      ["together-home.webp", "在一起的日常", "together"],
+      ["yuwei-lakeside.webp", "湖边的 Yuwei", "yuwei"],
+      ["shaohui-flowers.webp", "花墙前", "shaohui"],
+      ["together-hotel.webp", "靠近一点", "together"],
+      ["yuwei-field.webp", "春日田野", "yuwei"],
+      ["pink-roses-room.webp", "初见的粉玫瑰", "keepsake"],
+      ["yuwei-side-profile.webp", "侧影", "yuwei"],
+      ["yuwei-mirror.webp", "镜子前的 Yuwei", "yuwei"],
+      ["shaohui-dog-wall.webp", "和小狗打招呼", "shaohui"],
+      ["pink-roses-close.webp", "粉色花束", "keepsake"],
+      ["together-video-one.webp", "隔着屏幕也在一起", "together"],
+      ["shaohui-costume.webp", "少辉的绿色搭配", "shaohui"],
+      ["yuwei-costume-one.webp", "Yuwei 的条纹裙", "yuwei"],
+      ["yuwei-costume-two.webp", "Yuwei 的红色外套", "yuwei"],
+      ["together-mirror.webp", "镜子里的我们", "together"],
+      ["together-video-two.webp", "又一次视频见面", "together"],
+      ["sand-drawing.webp", "沙滩上的小画", "keepsake"],
+      ["handmade-doll.webp", "手作小人", "keepsake"],
+      ["pink-character.webp", "粉色小收藏", "keepsake"],
+      ["pencil-sketch.webp", "铅笔画", "keepsake"]
+    ];
+
+    const labels = { all: "全部照片", yuwei: "Yuwei", shaohui: "少辉", together: "我们", keepsake: "小收藏" };
+    const wall = document.getElementById("wall");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+
+    photos.forEach(([src, caption, category], index) => {
+      const figure = document.createElement("figure");
+      figure.className = "photo";
+      figure.dataset.category = category;
+      figure.tabIndex = 0;
+      figure.innerHTML = `<img src="assets/memories/${src}" alt="${caption}" loading="${index < 6 ? "eager" : "lazy"}" decoding="async"><figcaption><span>${caption}</span><span class="tag">${labels[category]}</span></figcaption>`;
+      const open = () => {
+        lightboxImage.src = `assets/memories/${src}`;
+        lightboxImage.alt = caption;
+        lightbox.classList.add("open");
+        document.body.style.overflow = "hidden";
+      };
+      figure.addEventListener("click", open);
+      figure.addEventListener("keydown", event => { if (event.key === "Enter" || event.key === " ") open(); });
+      wall.appendChild(figure);
+    });
+
+    document.querySelectorAll(".filter").forEach(button => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+        document.querySelectorAll(".filter").forEach(item => item.classList.toggle("active", item === button));
+        let shown = 0;
+        document.querySelectorAll(".photo").forEach(photo => {
+          photo.hidden = filter !== "all" && photo.dataset.category !== filter;
+          if (!photo.hidden) shown += 1;
+        });
+        document.getElementById("photoCount").textContent = `${labels[filter]} · ${shown}`;
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightboxImage.src = "";
+      document.body.style.overflow = "";
+    }
+    document.getElementById("close").addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", event => { if (event.target === lightbox) closeLightbox(); });
+    document.addEventListener("keydown", event => { if (event.key === "Escape") closeLightbox(); });
+  </script>
+</body>
+</html>

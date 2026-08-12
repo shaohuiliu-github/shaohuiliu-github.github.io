@@ -42,6 +42,23 @@
       user-select: none;
     }
 
+    .memory-link {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 1000;
+      padding: 10px 16px;
+      border: 1px solid rgba(124, 58, 237, .2);
+      border-radius: 999px;
+      color: #5b21b6;
+      background: rgba(255, 255, 255, .86);
+      box-shadow: 0 10px 30px rgba(76, 29, 149, .12);
+      backdrop-filter: blur(12px);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
     .screen {
       position: absolute;
       inset: 0;
@@ -697,6 +714,7 @@
   </style>
 </head>
 <body>
+  <a class="memory-link" href="memories.html">📷 我们的照片墙</a>
   <section id="intro" class="screen intro-screen active">
     <div class="balloon b1"></div>
     <div class="balloon b2"></div>
@@ -782,22 +800,24 @@
   <script>
     
 const galleryPhotos = [
-  "photos/photo1.jpg",
-  "photos/photo2.jpg",
-  "photos/photo3.jpg",
-  "photos/photo4.jpg",
-  "photos/photo5.jpg",
-  "photos/photo6.jpg",
-  "photos/photo7.jpg",
-  "photos/photo8.png",
-  "photos/photo9.jpg",
-  "photos/photo10.png",
-  "photos/photo11.jpg",
-  "photos/photo12.jpg",
-  "photos/photo13.jpg",
-  "photos/photo14.jpg",
-  "photos/photo15.jpg",
-  "photos/photo16.jpg"
+  "assets/memories/together-hotel.webp",
+  "assets/memories/yuwei-field.webp",
+  "assets/memories/yuwei-side-profile.webp",
+  "assets/memories/shaohui-mountain.webp",
+  "assets/memories/yuwei-flowers.webp",
+  "assets/memories/sand-drawing.webp",
+  "assets/memories/pink-character.webp",
+  "assets/memories/together-video-one.webp",
+  "assets/memories/handmade-doll.webp",
+  "assets/memories/together-video-two.webp",
+  "assets/memories/yuwei-costume-one.webp",
+  "assets/memories/shaohui-costume.webp",
+  "assets/memories/yuwei-costume-two.webp",
+  "assets/memories/together-mirror.webp",
+  "assets/memories/together-city.webp",
+  "assets/memories/shaohui-dog-wall.webp",
+  "assets/memories/together-home.webp",
+  "assets/memories/shaohui-flowers.webp"
 ];
 
     const foods = [
